@@ -37,7 +37,6 @@ public class HttpHelper {
 
     private HttpHelper(){
 
-
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         // set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
