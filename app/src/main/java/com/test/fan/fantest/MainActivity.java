@@ -1,171 +1,83 @@
 package com.test.fan.fantest;
 
-import android.support.v7.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ImageView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
-
-public class MainActivity extends AppCompatActivity {
-    private String tag = "tag";
-    private ImageView imageView;
-
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //        observable.subscribe(observer);
-//        observable.subscribe(subscriber);
-
-//        // 自动创建 Subscriber ，并使用 onNextAction 来定义 onNext()
-//        observable.subscribe(onNextAction);
-//        // 自动创建 Subscriber ，并使用 onNextAction 和 onErrorAction 来定义 onNext() 和 onError()
-//        observable.subscribe(onNextAction, onErrorAction);
-//        // 自动创建 Subscriber ，并使用 onNextAction、 onErrorAction 和 onCompletedAction 来定义 onNext()、 onError() 和 onCompleted()
-//        observable.subscribe(onNextAction, onErrorAction, onCompletedAction);
-
-//        String[] names = {"111","222","333","444","555"};
-//        Observable.from(names)
-//                .subscribe(new Action1<String>() {
-//                    @Override
-//                    public void call(String name) {
-//                        Log.d(tag, name);
-//                    }
-//                });
-
-//        final int drawableRes = R.drawable.ic_launcher;
-//        imageView = (ImageView) findViewById(R.id.ivView);
-//
-//        Observable.create(new Observable.OnSubscribe<Drawable>() {
-//            @Override
-//            public void call(Subscriber<? super Drawable> subscriber) {
-//                Drawable drawable = null;
-//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-//                    drawable = getTheme().getDrawable(drawableRes);
-//                }
-//                subscriber.onNext(drawable);
-//                subscriber.onCompleted();
-//            }
-//        }).subscribe(new Observer<Drawable>() {
-//            @Override
-//            public void onNext(Drawable drawable) {
-//                imageView.setImageDrawable(drawable);
-//            }
-//
-//            @Override
-//            public void onCompleted() {
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                Toast.makeText(TestActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-
-        Observable.just(1, 2, 3, 4)
-                .subscribeOn(Schedulers.io()) // 指定 subscribe() 发生在 IO 线程
-                .observeOn(AndroidSchedulers.mainThread()) // 指定 Subscriber 的回调发生在主线程
-                .subscribe(new Action1<Integer>() {
-                    @Override
-                    public void call(Integer number) {
-                        Log.d(tag, "number:" + number);
-                    }
-                });
+        ButterKnife.bind(this);
     }
 
-    Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
-        @Override
-        public void call(Subscriber<? super String> subscriber) {
-            subscriber.onNext("Hello");
-            subscriber.onNext("Hi");
-            subscriber.onNext("Aloha");
-            subscriber.onCompleted();
-        }
-    });
+
+    @OnClick(R.id.btn_get)
+    public void btn_get(){
+        HttpHelper.getInstance().findUserForGet();
+    }
+
+    @OnClick(R.id.btn_post)
+    public void btn_post(){
+        HttpHelper.getInstance().findUserForPost();
+    }
+
+    @OnClick(R.id.btn_post_body)
+    public void btn_post_body(){
+        HttpHelper.getInstance().postBodyJson();
+    }
+
+    @OnClick(R.id.btn_upload)
+    public void btn_upload(){
+        HttpHelper.getInstance().uploads();
+    }
 
 
-    Observer<String> observer = new Observer<String>() {
-        @Override
-        public void onNext(String s) {
-            Log.d(tag, "Item: " + s);
-        }
+    @OnClick(R.id.btn_down)
+    public void btn_down(){
+        HttpHelper.getInstance().downFile("girl.jpg");
+    }
 
-        @Override
-        public void onCompleted() {
-            Log.d(tag, "Completed!");
-        }
-
-        @Override
-        public void onError(Throwable e) {
-            Log.d(tag, "Error!");
-        }
-    };
-
-    Subscriber<String> subscriber = new Subscriber<String>() {
-        @Override
-        public void onNext(String s) {
-            Log.d(tag, "Item: " + s);
-        }
-
-        @Override
-        public void onCompleted() {
-            Log.d(tag, "Completed!");
-        }
-
-        @Override
-        public void onError(Throwable e) {
-            Log.d(tag, "Error!");
-        }
-    };
-
-    Action1<String> onNextAction = new Action1<String>() {
-        // onNext()
-        @Override
-        public void call(String s) {
-            Log.d(tag, s);
-        }
-    };
-
-    Action1<Throwable> onErrorAction = new Action1<Throwable>() {
-        // onError()
-        @Override
-        public void call(Throwable throwable) {
-            // Error handling
-        }
-    };
-
-    Action0 onCompletedAction = new Action0() {
-        // onCompleted()
-        @Override
-        public void call() {
-            Log.d(tag, "completed");
-        }
-    };
+    @OnClick(R.id.btn_findList)
+    public void btn_findList(){
+        HttpHelper.getInstance().findUserList();
+    }
 
 
-    Observable observable1 = Observable.just("Hello", "Hi", "Aloha");
-    // 将会依次调用：
-    // onNext("Hello");
-    // onNext("Hi");
-    // onNext("Aloha");
-    // onCompleted();
+    @OnClick(R.id.btn_rx_get)
+    public void btn_rx_get(){
+        HttpRxHelper.getInstance().findUserForGet();
+    }
+
+    @OnClick(R.id.btn_rx_post)
+    public void btn_rx_post(){
+        HttpRxHelper.getInstance().findUserForPost();
+    }
+
+    @OnClick(R.id.btn_rx_post_body)
+    public void btn_rx_post_body(){
+        HttpRxHelper.getInstance().postBodyJson();
+    }
+
+    @OnClick(R.id.btn_rx_upload)
+    public void btn_rx_upload(){
+        HttpRxHelper.getInstance().uploads();
+    }
+
+    @OnClick(R.id.btn_rx_down)
+    public void btn_rx_down(){
+        HttpRxHelper.getInstance().downFile("girl.jpg");
+    }
+
+    @OnClick(R.id.btn_rx_findList)
+    public void btn_rx_findList(){
+        HttpRxHelper.getInstance().findUserList();
+    }
 
 
-    String[] words = {"Hello", "Hi", "Aloha"};
-    Observable observable2 = Observable.from(words);
-    // 将会依次调用：
-    // onNext("Hello");
-    // onNext("Hi");
-    // onNext("Aloha");
-    // onCompleted();
+
 }
