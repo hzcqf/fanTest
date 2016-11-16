@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RxJava.RxJavaActivity"></activity>
+        <activity android:name=".rxJava.RxJavaActivity" />
+        <activity android:name=".annex.UseCameraActivity"></activity>
     </application>
 
 </manifest>
