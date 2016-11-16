@@ -1,4 +1,4 @@
-package com.test.fan.fantest;
+package com.test.fan.fantest.RxJava;
 
 /**
  * Created by Fan. on 2016/11/8.

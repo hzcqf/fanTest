@@ -1,4 +1,4 @@
-package com.test.fan.fantest;
+package com.test.fan.fantest.RxJava;
 
 import java.io.IOException;
 

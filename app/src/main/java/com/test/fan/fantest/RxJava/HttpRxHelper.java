@@ -1,4 +1,4 @@
-package com.test.fan.fantest;
+package com.test.fan.fantest.RxJava;
 
 import android.os.Environment;
 import android.util.Log;
