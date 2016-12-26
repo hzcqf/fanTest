@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/arcGis/arcgis.iml" filepath="$PROJECT_DIR$/arcGis/arcgis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arcGis/arcGis.iml" filepath="$PROJECT_DIR$/arcGis/arcGis.iml" />
       <module fileurl="file://$PROJECT_DIR$/fanTest.iml" filepath="$PROJECT_DIR$/fanTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rxJava/Rxjava.iml" filepath="$PROJECT_DIR$/rxJava/Rxjava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxJava/rxJava.iml" filepath="$PROJECT_DIR$/rxJava/rxJava.iml" />
     </modules>
   </component>
 </project>
