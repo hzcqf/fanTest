@@ -1,1 +1,1 @@
-include ':rxJava', ':arcGis'
+include ':rxJava', ':arcGis', ':glideandpicasso'

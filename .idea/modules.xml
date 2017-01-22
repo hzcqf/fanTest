@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/arcGis/arcGis.iml" filepath="$PROJECT_DIR$/arcGis/arcGis.iml" />
       <module fileurl="file://$PROJECT_DIR$/fanTest.iml" filepath="$PROJECT_DIR$/fanTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/glideandpicasso/glideandpicasso.iml" filepath="$PROJECT_DIR$/glideandpicasso/glideandpicasso.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxJava/rxJava.iml" filepath="$PROJECT_DIR$/rxJava/rxJava.iml" />
     </modules>
   </component>
